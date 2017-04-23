@@ -1,0 +1,129 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/Raynos/corsify"
+
+    >corsify (v2.1.0)</a>
+</h1>
+<h4>CORS up a route handler</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.corsify">module corsify</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.corsify.corsify">
+            function <span class="apidocSignatureSpan"></span>corsify
+            <span class="apidocSignatureSpan">(opts, handler)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.corsify" id="apidoc.module.corsify">module corsify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.corsify.corsify" id="apidoc.element.corsify.corsify">
+        function <span class="apidocSignatureSpan"></span>corsify
+        <span class="apidocSignatureSpan">(opts, handler)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Corsify(opts, handler) {
+    if (typeof opts === &#x22;function&#x22;) {
+        handler = opts
+        opts = {}
+    }
+
+    if (!handler &#x26;&#x26; opts &#x26;&#x26; !isOptions(opts)) {
+        handler = opts
+        opts = {}
+    }
+
+    if (!handler) {
+        return Corsify.bind(null, opts)
+    }
+
+    if (typeof handler !== &#x22;function&#x22;) {
+        handler = methods(handler)
+    }
+
+    return routeHandler
+
+    function routeHandler(req, res) {
+        addCrossDomainHeaders(req, res, opts)
+        if (opts.endOptions !== false &#x26;&#x26; req.method === &#x22;OPTIONS&#x22;) {
+            res.end()
+        } else {
+            handler.apply(this, arguments)
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
